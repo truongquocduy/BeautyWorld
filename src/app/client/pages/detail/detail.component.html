@@ -1,0 +1,124 @@
+<div class="row bg-dark p-5" style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(assets/img/bannerNam.jpg);background-size: 100%;height: 500px;">
+    <div class="col-lg-12 p-5 text-center text-light" >
+        <h3>ÁO</h3>
+        <p>Trang chủ * Áo * Áo nam Hazzys HUTS2A212WT</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-10 mx-auto" style="margin-top: -200px;background-color: white;">
+        <div class="row pt-3">
+            <div class="col-lg-5 p-5">
+                <img [src]="'assets/images/products/' + productTarget.image" alt="" class="w-100">
+
+                <div class="row p-3">
+                    <div class="col-lg-3 p-0">
+                        <img [src]="'assets/images/products/' + productTarget.image" alt="" class="w-100">
+                    </div>
+                    <div class="col-lg-3 p-0">
+                        <img [src]="'assets/images/products/' + productTarget.thumbnail[0]" alt="" class="w-100">
+                    </div>
+                    <div class="col-lg-3 p-0">
+                        <img [src]="'assets/images/products/' + productTarget.thumbnail[0]" alt="" class="w-100">
+                    </div>
+                    <div class="col-lg-3 p-0">
+                        <img [src]="'assets/images/products/' + productTarget.thumbnail[0]" alt="" class="w-100">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-7 p-5">
+                <h3>
+                    {{ productTarget.name }}
+                </h3>
+                <h4 class="mt-4" style="font-weight: 400;">
+                    {{ productTarget.price | currency:'':'':'.0-2' }} VNĐ
+                </h4>
+                <p class="mt-4" style="font-weight: 400;">
+                    TÌNH TRẠNG: <span class="ms-3 text-success">CÒN HÀNG <img class="mb-1" src="assets/img/checkbox-outline.svg" width="16px" alt=""></span>
+                </p>
+                
+                <p class="mt-4" style="font-weight: 400;">
+                    SỐ LƯỢNG: {{ productTarget.instock }}
+                </p>
+                <button class="btn btn-primary mr-2"><strong>-</strong></button>
+                <button class="btn btn-secondary" disabled><strong>1</strong></button>
+                <button class="btn btn-primary ml-2"><strong>+</strong></button>
+
+                <p class="mt-4" style="font-weight: 400;">
+                    {{ productTarget.intro }}
+                </p>
+
+                <button class="btn text-light p-3 w-100 mt-5" style="background-color: #535353;border-radius: unset;">THÊM VÀO GIỎ HÀNG</button>
+                <button class="btn btn-outline-success p-3 w-100 mt-2" style="border-radius: unset;">THÊM VÀO MỤC YÊU THÍCH</button>
+
+                <p class="mt-4" style="font-weight: 400;line-height: 40px;">
+                    GỌI ĐỂ ĐẶT HÀNG: <br>
+                    0369082061
+                </p>
+
+                <p class="mt-4" style="font-weight: 400;line-height: 40px;">
+                    <img src="assets/img/share-social-outline.svg" width="20px" alt="">
+                    <span class="ml-2" style="font-weight: 100;font-size: 15px;">Share</span>
+                    <img class="ml-2" src="assets/img/logo-facebook.svg" width="20px" alt="">
+                    <img class="ml-2" src="assets/img/logo-youtube.svg" width="20px" alt="">
+                    <img class="ml-2" src="assets/img/logo-twitter.svg" width="20px" alt="">
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row p-5" style="background-color: #f5f3ee;">
+    
+    <div class="col-lg-10 mx-auto">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#home">Thông tin sản phẩm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu1">Chất liệu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu2">Bình luận</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#menu3">Đánh giá</a>
+            </li>
+        </ul>
+          
+          <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane container active" id="home">
+                <div class="row pt-5">
+                    <div class="col-lg-12" style="min-height: 300px;">
+                        <h2 style="font-weight: 400;">THÔNG TIN SẢN PHẨM</h2>
+                        <p class="mt-2" [innerHTML]="productTarget.details"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane container fade" id="menu1">
+                <div class="row pt-5">
+                    <div class="col-lg-12" style="min-height: 300px;">
+                        <h2 style="font-weight: 400;">CHẤT LIỆU</h2>
+                        <p class="mt-2" [innerHTML]="productTarget.material"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane container fade" id="menu2">
+                <div class="row pt-5">
+                    <div class="col-lg-12" style="min-height: 300px;">
+                        <h2 style="font-weight: 400;">ĐÁNH GIÁ SẢN PHẨM</h2>
+                        <p class="mt-2">Sản phẩm đang được cập nhật thông tin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane container fade" id="menu3">
+                <div class="row pt-5">
+                    <div class="col-lg-12" style="min-height: 300px;">
+                        <h2 style="font-weight: 400;">ĐÁNH GIÁ SẢN PHẨM</h2>
+                        <p class="mt-2">Sản phẩm đang được cập nhật thông tin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

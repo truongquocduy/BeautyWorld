@@ -1,0 +1,83 @@
+<span>Dashboard</span>
+<div class="row justify-content-center">
+    <div class="mr-2 mt-2 report-card p-3">
+        <i class="fa-solid fa-user" style="font-size: 80px;"></i>
+        <div class="ms-5 w-100 p-2 text-center">
+            <span>Total Products</span>
+            <h3>{{ totalProduct | currency:'':'':'.0-2' }}</h3>
+        </div>
+    </div>
+    <div class="mr-2 mt-2 report-card p-3">
+        <i class="fa-solid fa-user" style="font-size: 80px;"></i>
+        <div class="ms-5 w-100 p-2 text-center">
+            <span>Total Customers</span>
+            <h3>{{ totalUser | currency:'':'':'.0-2' }}</h3>
+        </div>
+    </div>
+    <div class="mr-2 mt-2 report-card p-3">
+        <i class="fa-solid fa-user" style="font-size: 80px;"></i>
+        <div class="ms-5 w-100 p-2 text-center">
+            <span>Total Revenue</span>
+            <h3>{{ totalRevenue | currency:'':'':'.0-2' }}</h3>
+        </div>
+    </div>
+    <div class="mr-2 mt-2 report-card p-3">
+        <i class="fa-solid fa-user" style="font-size: 80px;"></i>
+        <div class="ms-5 w-100 p-2 text-center">
+            <span>Revenue/Month</span>
+            <h3>{{ totalRevenue_M | currency:'':'':'.0-2' }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+    <div class="col-lg-6 p-4 m-3" style="border-radius: 14px;background-color: #2a2e3f;">
+        <canvas mdbChart
+        [chartType]="ChartRight.chartType"
+        [datasets]="ChartRight.chartDatasets"
+        [labels]="ChartRight.chartLabels"
+        [colors]="ChartRight.chartColors"
+        [options]="ChartRight.chartOptions"
+        [legend]="true">
+      </canvas>
+    </div>
+    <div class="col-lg-3 m-3 p-5" style="background-color: #2a2e3f;border-radius: 6px;">
+        <img src="assets/admin/images/nang-cap-bac.svg" alt="" width="120px" class="mx-auto d-block">
+        <h5 class="text-center mt-3">Nâng cấp bậc!</h5>
+        <p class="text-center">Bạn sẽ nhận được nhiều ưu hơn hơn như: giảm giá dịch vụ, tạo website riêng, hỗ trợ ...</p>
+        <button class="btn text-light mx-auto d-block ps-5 pe-5 mt-4" style="border-color: #1a9c86;background-color: #016a59;">Nâng ngay nào!</button>
+    </div>
+</div>
+<div class="row p-3">
+    <div class="col-lg-12">
+        <span>Notification</span>
+    </div>
+    <div class="col-lg-9 p-3 mt-3" style="background-color: #2a2e3f;border-radius: 6px;">
+        <div class="row">
+            <div class="col-lg-12" style="display: flex;">
+                <img src="assets/admin/images/security.svg" alt="" width="50px">
+                <h5 class="mr-3">THÔNG BÁO <br>
+                    <span style="font-size: 14px;color: rgb(237, 219, 219);">2022-08-03 18:53:36</span>
+                    <span class="badge badge-warning ml-2" style="border-radius: 0;">New</span>
+                </h5>
+            </div>
+        </div>
+        <div class="row p-3">
+            Khách háng Ho Thi Hieu Kien,vừa đặt hàng thành công đơn hàng 0HDGJAHYUI124, tổng giá trị là 1,000,000 VNĐ, vào lúc 2022-01-02 19:09:32, bằng phương thức thanh toán COD, hình thức giao hàng tiết kiệm.
+        </div>
+    </div>
+    
+    <div class="col-lg-9 p-3 mt-3" style="background-color: #2a2e3f;border-radius: 6px;">
+        <div class="row">
+            <div class="col-lg-12" style="display: flex;">
+                <img src="assets/admin/images/security.svg" alt="" width="50px">
+                <h5 class="mr-3">THÔNG BÁO <br>
+                    <span style="font-size: 14px;color: rgb(237, 219, 219);">2022-08-03 18:53:36</span>
+                </h5>
+            </div>
+        </div>
+        <div class="row p-3">
+            Đã có Mbank tự động, và nạp thẻ tự động, các thành viên có thể nạp mà không cần thông qua admin, sau khi nạp 5 phút tiền sẽ được cộng vào tài khoảng. - đối với mbbank yêu cầu nạp đúng nội dung, nếu sai liên hệ mình để mình cộng tiền.
+        </div>
+    </div>
+</div>

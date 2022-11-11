@@ -1,0 +1,134 @@
+<img *ngIf="isLoader" class="loader-image" [src]="'assets/images/products/loader.gif'" alt="">
+<div class="row justify-content-center">
+    <div class="col-lg-7 p-3">
+        <h4>Chi tiết giỏ hàng</h4>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Tên hàng</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listCarts">
+                    <td><img [src]="'assets/images/products/' + item.image" width="80px" alt=""
+                            style="border-radius: 10px;"></td>
+                    <td style="vertical-align: middle;">{{ item.name }}</td>
+                    <td style="vertical-align: middle;">{{ item.price | currency:'':'':'.0-2' }} VNĐ</td>
+                    <td style="vertical-align: middle;width: 150px;">
+                        <button class="btn btn-primary mr-2"
+                            (click)="changeQualityItem(item.id,'down')"><strong>-</strong></button>
+                        <button class="btn btn-secondary" disabled><strong>{{ item.quality }}</strong></button>
+                        <button class="btn btn-primary ml-2"
+                            (click)="changeQualityItem(item.id,'up')"><strong>+</strong></button>
+                    </td>
+                    <td style="vertical-align: middle;">{{ item.quality * item.price | currency:'':'':'.0-2' }} VNĐ</td>
+                    <td style="vertical-align: middle;" (click)="removeItem(item.id)"><i class="fa-solid fa-trash"
+                            data-toggle="tooltip" title="Xóa sản phẩm này!" style="cursor: pointer;"></i></td>
+                </tr>
+                <tr *ngIf="listCarts.length == 0">
+                    <td colspan="6" class="text-center">
+                        <h4>Giỏ hàng trống !!!</h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-3 p-3" style="border-left: 1px solid rgb(229, 221, 221);">
+        <h4>Địa chỉ nhận hàng</h4>
+        <div *ngIf="showAddress" class="form-check">
+            <label class="form-check-label" *ngFor="let item of user.address">
+                <input type="radio" class="form-check-input mt-2" name="address" [(ngModel)]="address" [value]="item.id" [checked]="item.status">
+                <p class="m-0">{{ item.details }} 
+                    <code *ngIf="item.status" class="ml-2 bg-primary text-light pl-2 pr-2">mặc định</code>
+                    <code *ngIf="!item.status" class="ml-2 bg-warning pl-2 pr-2 text-light" style="cursor: pointer;" (click)="updateAddressDefault(item.id)">chọn làm mặc định</code>
+                    <code (click)="spliceAddress(item.id)">
+                        <i class="fa-solid fa-trash ml-2" data-toggle="tooltip" title="Xóa địa chỉ này!" style="cursor: pointer;"></i>
+                    </code>
+                </p>
+                <code>SDT: {{ item.phone }}</code>
+            </label>
+        </div>
+        <button *ngIf="showAddress" class="btn text-primary" data-toggle="modal" data-target="#editAddress">Thêm địa chỉ mới</button>
+        <button *ngIf="!showAddress" class="btn p-0"><a class="nav-link p-0" href="#" data-toggle="modal"
+            data-target="#myModal">Nhấn vào đây để đăng nhập</a></button>
+        <hr>
+        <h4>Phương thức vận chuyển</h4>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input mt-2" name="transit" value="25000" [(ngModel)]="transitFee" (change)="getTotal()" checked>
+                <p>Giao hàng tiết kiệm <img src="assets/images/icons/giaotietkiem.webp" width="50px" alt=""></p>
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" value="40000" [(ngModel)]="transitFee" (change)="getTotal()" name="transit">
+                <p>Giao hàng nhanh <img src="assets/images/icons/giaohangnhanh.webp" width="50px" alt=""></p>
+            </label>
+        </div>
+        <hr>
+        <h4>Phương thức thanh toán</h4>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="paymentMethod" checked>
+                <p>Thanh toán tiền mặt (COD)</p>
+            </label>
+        </div>
+        <hr>
+        <h6>Giá sản phẩm: {{ totalCart - transitFee | currency:'':'':'.0-2' }} VNĐ</h6>
+        <h6>Phí vận chuyển: {{ transitFee | currency:'':'':'.0-2' }} VNĐ</h6>
+        <h4>Tổng thanh toán: {{ totalCart | currency:'':'':'.0-2' }} VNĐ</h4>
+        <button class="btn btn-outline-success mt-3 w-100" (click)="checkout()">Thanh toán</button>
+    </div>
+</div>
+<div class="modal fade" id="editAddress">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4>Thêm địa chỉ mới</h4>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="form-group">
+                            <select class="form-control"  [(ngModel)]="selectedProvince" (change)="getDistricts()">
+                                <option value="" selected disabled>Chọn Tỉnh/Thành phố</option>
+                                <option *ngFor="let item of listProvince" [value]="item.id">{{ item.name }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" [(ngModel)]="selectedDistrict" (change)="getWards()">
+                                <option value="" selected disabled>Chọn Quận/Huyện</option>
+                                <option *ngFor="let item of listDistricts" [value]="item.id">{{ item.name }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" [(ngModel)]="selectedWard">
+                                <option value="" selected disabled>Chọn Phường/Xã</option>
+                                <option *ngFor="let item of listWards" [value]="item.id">{{ item.name }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" id="diachi" placeholder="Số nhà" [(ngModel)]="selectedAddress"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Số điện thoại" [(ngModel)]="selectedPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Ghi chú:</label>
+                            <textarea class="form-control" rows="5" id="comment" [(ngModel)]="selectedNote"></textarea>
+                        </div>
+                        <button class="btn btn-outline-success w-100 p-3" (click)="addAddress()">Thêm địa chỉ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <app-login *ngIf="this.route.url == '/carts'" (messageEvent)="updateEventFromChild($event)"></app-login>
+</div>

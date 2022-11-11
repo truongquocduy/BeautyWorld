@@ -1,0 +1,159 @@
+body{
+    font-family: 'Comfortaa', sans-serif;
+}
+.a--menu{
+    font-weight: 500;
+    color:#1A1A1A
+}
+
+.imgbanner{
+    /* transform: skew(1); */
+    width: 100%;
+}
+
+.vert .carousel-item-next,
+.vert .active.carousel-item-right {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100% 0);
+}
+
+.vert .carousel-item-prev,
+.vert .active.carousel-item-left {
+-webkit-transform: translate3d(0,-100%, 0);
+        transform: translate3d(0,-100%, 0);
+}
+.vertR .carousel-item-next,
+.vertR .active.carousel-item-right {
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100% 0);
+}
+
+.vertR .carousel-item-prev,
+.vertR .active.carousel-item-left {
+-webkit-transform: translate3d(0,100%, 0);
+        transform: translate3d(0,100%, 0);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #212529;
+
+
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #f1f1f1;
+
+    border-radius: 10px;
+
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+}
+.products{
+    background-color: white;
+    overflow: hidden;
+}
+.products img:nth-child(2){
+    position: absolute;
+    left: 0;
+    display: none;
+}
+.products:hover img:nth-child(2){
+    display: unset;
+    animation: product_animate linear 1s forwards;
+}
+@keyframes product_animate {
+    from{
+        transform: scale();
+
+    }
+    to{
+        transform: scale(1.2);
+    }
+}
+
+.btn-products{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: white;
+    float: right;
+    position: absolute;
+    right: -60px;
+    bottom: 110%;
+    transition: right linear .2s;
+    padding: 17px;
+    cursor: pointer;
+}
+.products:hover .btn-products{
+    right: 10px;
+}
+.product-title{
+    font-size: 18px;
+    padding: 20px 30px 4px 30px;
+    margin: 0
+
+}
+.product-price{
+    font-size: 18px;
+    padding: 10px 30px 20px;
+    margin: 0
+}
+.ul_menu li:hover{
+    cursor: pointer;
+    background-color: rgb(61, 56, 56);
+    color: white;
+    border-radius: 5px;
+}
+
+  
+  /* Simple CSS3 Fade-in Animation */
+  .underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+  }
+  
+  .underlineHover:hover {
+    color: #0d0d0d;
+  }
+  
+  .underlineHover:hover:after{
+    width: 100%;
+  }
+
+  @keyframes openLogin {
+    from{
+      left: 0;
+    }
+    to{
+      left: 50%;
+    }
+    
+  }
+  @keyframes closeLogin {
+    from{
+      left: 50%;
+    }
+    to{
+      left: 0;
+    }
+    
+  }
+  

@@ -1,0 +1,85 @@
+<div class="modal fade " id="myModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered"  id="khungmodal">
+        
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button class="btn btn-outline-success w-50" style="width: 300px;"
+                    onclick="openFormLogin(true)">LOGIN</button>
+                <button class="btn btn-outline-primary ms-2 w-50" style="width: 300px;"
+                    onclick="openFormLogin(false)">REGISTER NOW</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" >
+                <div class="row">
+                    <div class="col-lg-6 h-100 " id="manche" style="position: absolute;z-index: 10;">
+                        <img class="mx-auto d-block mt-5" src="assets/img/products/1_1.jpg" alt=""
+                            style="width: 100%;border-radius: 10px;">
+                    </div>
+                    <div class="col-lg-6 p-3">
+                        <div class="w-100" id="logindisplay">
+                            <div class="wrapper fadeInDown">
+                                <div id="formContent">
+                                    <!-- Tabs Titles -->
+                                    <h2 class="login active"> Login Now </h2>
+
+                                    <!-- Icon -->
+                                    <div class="fadeIn first">
+                                        <img src="assets/images/banners/logo.png" id="icon"
+                                            alt="User Icon" style="width: 100px;"/>
+                                    </div>
+
+                                    <!-- Login Form -->
+                                        <input type="text" class="fadeIn second" [(ngModel)]="Lemail" name="email"
+                                            placeholder="Email">
+                                        <input type="text" class="fadeIn third" [(ngModel)]="Lpassword" name="password"
+                                            placeholder="Password">
+                                        <input type="submit" class="fadeIn fourth" value="Log In" (click)="login()">
+                                    <!-- Remind Passowrd -->
+                                    <div id="formFooter">
+                                        <a class="underlineHover" href="#">Forgot Password?</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 p-3 " style="min-height: 600px;">
+                        <div class="w-100" id="registerdisplay">
+                            <div class="wrapper fadeInDown">
+                                <div id="formContent">
+                                    <!-- Tabs Titles -->
+                                    <h2 class="login active"> Register Now </h2>
+
+                                    <!-- Icon -->
+                                    <div class="fadeIn first">
+                                        <img src="assets/images/banners/logo.png" id="icon" style="width: 100px;">
+                                    </div>
+
+                                    <!-- Login Form -->
+                                    
+                                        <input type="text"  class="fadeIn second" [(ngModel)]="Rname" name="name" placeholder="Full Name">
+                                        <!-- <span class="badge bg-danger" v-show="!errRegister.name">Kí tự không hợp lệ</span> -->
+                                        <input type="text"  class="fadeIn second" [(ngModel)]="Remail" name="email" placeholder="Email">
+                                        <!-- <span class="badge bg-danger" v-show="!errRegister.account">Kí tự không hợp lệ</span> -->
+
+                                        <input type="text"  class="fadeIn third" [(ngModel)]="Rpassword" name="password" placeholder="Password">
+                                        <!-- <span class="badge bg-danger" v-show="!errRegister.password">Kí tự không hợp lệ</span> -->
+
+                                        <input type="submit" class="fadeIn fourth" value="Register Now" (click)="register()">
+                                    <!-- Remind Passowrd -->
+                                    <div id="formFooter">
+                                        <a class="underlineHover" href="#">Forgot Password?</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

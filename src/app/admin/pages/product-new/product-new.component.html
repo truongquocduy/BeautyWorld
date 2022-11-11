@@ -1,0 +1,78 @@
+<span>Products Control / Create</span>
+<div class="row mt-3">
+    <div class="col-lg-12">
+        <form (submit)="createProduct()">
+            <div class="row">
+                <div class="col-lg-8 background-primary p-3 mb-2" style="border-radius: 8px;">
+                    <div class="mb-3 mt-3">
+                        <label for="name" class="form-label">Product Name:</label>
+                        <input type="text" class="form-control input-primary" id="name" [(ngModel)]="newProduct.name" placeholder="Enter Product Name" name="name" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category:</label>
+                        <select class="form-control input-primary"  name="category" id="category" [(ngModel)]="newProduct.trademark">
+                            <option value="0" disabled>Select Product Category, please </option>
+                            <option [value]="cate.id" *ngFor="let cate of listCategory">{{ cate.name }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">Product Stock:</label>
+                        <input type="number" class="form-control input-primary" [(ngModel)]="instock" id="stock" placeholder="Enter Product Stock" name="stock" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="intro" class="form-label">Intro:</label>
+                        <textarea class="form-control input-primary" rows="7" id="intro" [(ngModel)]="newProduct.intro" name="text"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="details" class="form-label">Details:</label>
+                        <textarea class="form-control input-primary" rows="7" id="details" [(ngModel)]="newProduct.details" name="text"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="material" class="form-label">Material:</label>
+                        <textarea class="form-control input-primary" rows="7" id="material" [(ngModel)]="newProduct.material" name="text"></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-3 p-3 background-primary mx-auto" style="border-radius: 8px;">
+                    <div class="mb-3 p-3">
+                        <label for="stock" class="form-label">Feature Image:</label>
+                        <img [src]="'assets/images/products/' + image" alt="" class="w-100" id="productImagePrimary" style="border-radius: 4px;">
+                        <input type="file" class="btn btn-primary w-100 mt-2" name="image" (change)="changeImg($event)">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="imageThumbnailcheck" name="isSetthumbail" [(ngModel)]="isSetthumbail">
+                        <label class="form-check-label" for="imageThumbnailcheck" >Set Thumbnail</label>
+                    </div>
+                    <div class="mb-3 bg-light text-dark p-2" style="border-radius: 4px;" *ngIf="isSetthumbail">
+                        <table>
+                            <tr class="thumbnailItemArea">
+                                <td>
+                                    <img [src]="'assets/images/products/' + thumbnail"  width="80px" alt="" style="border-radius: 4px;" >
+                                </td>
+                                <td class="ps-2" style="display: flex;overflow: hidden;">
+                                    <input type="file" class="btn btn-primary w-100 mt-2" (change)="changeThumbnail($event)">
+                                    <button type="button" class="btn btn-danger mt-2 nav-link text-light removeThumbnail ms-2" ></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="button" class="btn btn-outline-success mx-auto d-block mt-1 w-100">Add Thumbnail</button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price:</label>
+                        <input type="number" class="form-control input-primary" id="price" placeholder="Enter Price"  [(ngModel)]="price" name="price" value="">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="salePricecheck" name="isSetCost" [(ngModel)]="isSetCost">
+                        <label class="form-check-label" for="salePricecheck" >Allow Sale</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="salePrice" class="form-label">Price Before Sale:</label>
+                        <input type="number" class="form-control input-primary" id="salePrice" placeholder="Enter Price Before Sale" name="salePrice"  [(ngModel)]="cost" [value]="price" [disabled]="!isSetCost" (change)="changeCostPrice($event)">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 p-3">CREATE PRODUCT</button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>

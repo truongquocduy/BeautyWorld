@@ -1,0 +1,64 @@
+<span>User Control</span>
+<div class="row justify-content-center">
+    <div class="mr-2 mt-2 report-card p-3">
+        <i class="fa-solid fa-user" style="font-size: 80px;"></i>
+        <div class="ms-5 w-100 p-2 text-center">
+            <span>Total User</span>
+            <h3>{{ totalUser | currency:'':'':'.0-2' }}</h3>
+        </div>
+    </div>
+    <div class="mr-2 mt-2 report-card p-3">
+        <i class="fa-solid fa-user" style="font-size: 80px;"></i>
+        <div class="ms-5 w-100 p-2 text-center">
+            <span>Total Customers</span>
+            <h3>{{ 123 | currency:'':'':'.0-2' }}</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8 mt-4">
+        <table class="table table-hover text-light">
+            <tr>
+                <td></td>
+                <td>Name</td>
+                <td>Birth</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>Total Buy</td>
+                <td>Action</td>
+            </tr>
+            <tr *ngFor="let item of listUser">
+                <td><img [src]="'assets/images/icons/undraw_profile.svg'" width="40px" alt=""></td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.birth }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item | primaryPhone }}</td>
+                <td>{{ item }}</td>
+                <td>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="p-0" style="cursor: pointer;">
+                                <i class="fa-solid fa-pen-to-square text-light" style="cursor: pointer;width: 25px;opacity: 0.8;"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-0" style="cursor: pointer;"  (click)="deleteUser(item.id)">
+                                <i class="fa-solid fa-trash text-light" data-toggle="tooltip" title="Xóa khách hàng này!" style="cursor: pointer;width: 25px;opacity: 0.8;"></i>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-4 p-4 mt-3" style="border-radius: 14px;background-color: #2a2e3f;">
+        <canvas mdbChart
+        [chartType]="ChartRight.chartType"
+        [datasets]="ChartRight.chartDatasets"
+        [labels]="ChartRight.chartLabels"
+        [colors]="ChartRight.chartColors"
+        [options]="ChartRight.chartOptions"
+        [legend]="true">
+      </canvas>
+    </div>
+</div>

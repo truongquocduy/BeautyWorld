@@ -1,0 +1,94 @@
+<div class="row bg-light justify-content-center">
+    <div class="col-lg-7 p-5 mt-3" style="background-color: white;">
+        <h3 class="text-center">CẢM ƠN BẠN ĐÃ MUA HÀNG</h3>
+        <div class="row">
+            <div class="col-lg-6 pt-5">
+                <table class="table table-borderless">
+                    <tr>
+                        <td><strong>Mã hóa đơn:</strong></td>
+                        <td><p>{{ order.order_id }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Họ tên:</strong></td>
+                        <td><p>{{ order.user_name }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email:</strong></td>
+                        <td><p>{{ order.user_email }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Số điện thoại:</strong></td>
+                        <td><p>{{ order.user_phone }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Địa chỉ nhận hàng:</strong></td>
+                        <td><p>{{ order.address }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ngày đặt:</strong></td>
+                        <td><p>{{ order.created_at }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dự kiến ngày nhận:</strong></td>
+                        <td><p>{{ order.received_at }}</p></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-6 pt-5">
+                <table class="table table-borderless">
+                    <tr>
+                        <td><strong>Trạng thái:</strong></td>
+                        <td>
+                            <p *ngIf="!order.status" class="bg-warning text-light text-center">Chưa thanh toán</p>
+                            <p *ngIf="order.status" class="bg-success text-light text-center">Đã thanh toán</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phương thức vận chuyển:</strong></td>
+                        <td><p>{{ order.transitMethod }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phương thức thanh toán:</strong></td>
+                        <td><p>{{ order.paymentMethod }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tổng sản phẩm:</strong></td>
+                        <td><p>{{ order.total | currency:'':'':'.0-2'}} VNĐ</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phí vận chuyển:</strong></td>
+                        <td><p>{{ order.transitFee | currency:'':'':'.0-2' }} VNĐ</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tổng tiền:</strong></td>
+                        <td><p>{{ order.finalTotal | currency:'':'':'.0-2' }} VNĐ</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h3 class="text-center">SẢN PHẨM ĐÃ MUA</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Tên hàng</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of order.carts">
+                    <td><img [src]="'assets/images/products/' + item.image" width="80px" alt=""
+                            style="border-radius: 10px;"></td>
+                    <td style="vertical-align: middle;">{{ item.name }}</td>
+                    <td style="vertical-align: middle;">{{ item.price | currency:'':'':'.0-2' }} VNĐ</td>
+                    <td style="vertical-align: middle;width: 150px;">
+                        <button class="btn btn-secondary" disabled><strong>{{ item.quality }}</strong></button>
+                    </td>
+                    <td style="vertical-align: middle;">{{ item.price * item.quality | currency:'':'':'.0-2' }} VNĐ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

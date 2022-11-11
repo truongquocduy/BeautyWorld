@@ -1,0 +1,28 @@
+// custom
+* {
+    font-family: 'Oswald', sans-serif !important;
+    -webkit-touch-callout: none!important;
+    -moz-user-select: none !important;
+    -webkit-user-select: none!important;
+    -khtml-user-select: none!important;
+    -moz-user-select: none!important;
+    -ms-user-select: none!important;
+    user-select: none!important;
+}
+
+.background-primary {
+    background-color: #2a2e3f;
+}
+
+.background-body {
+    background-color: #383d52;
+}
+
+.removeThumbnail{
+    position: relative;
+    right: -54px;
+    transition: right linear .2s;
+}
+.thumbnailItemArea:hover .removeThumbnail{
+    right: 0;
+}

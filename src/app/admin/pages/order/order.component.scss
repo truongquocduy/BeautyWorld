@@ -1,0 +1,35 @@
+.report-card {
+    border-radius: 6px;
+    display: flex;
+    width: 48% !important;
+}
+
+.report-card:nth-child(1) {
+    background: linear-gradient(to right, #4ec2f0 0%, rgba(78, 194, 240, 0.5) 100%);
+}
+
+.report-card:nth-child(2) {
+    background: linear-gradient(to left, gold 0%, rgba(56, 202, 179, 0.5) 100%);
+}
+
+.report-card:nth-child(3) {
+    background: linear-gradient(to right, gray 0%, rgb(3 150 101) 100%);
+}
+
+.report-card:nth-child(4) {
+    background: linear-gradient(to right, tomato 0%, rgba(78, 194, 240, 0.5) 100%);
+}
+
+.rounded a {
+    font-size: 16px;
+}
+
+.table-hover tbody tr:hover td {
+    background: rgba(255, 99, 71, 0.247);
+    color: white !important;
+    cursor: pointer;
+}
+.pagination li a {
+    background-color: #2a2e3f !important;
+    color: white !important;
+}
